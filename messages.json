@@ -1,0 +1,15 @@
+{
+    "start_message": "Привет! Я ваш финансовый помощник. Выберите опцию:",
+    "already_registered": "Вы уже зарегистрированы!",
+    "registration_success": "Вы успешно зарегистрированы!",
+    "currency_error": "Не удалось получить данные о курсе валют.",
+    "currency_rates": "Доллар США -  1 USD = {usd_to_rub:.2f} RUB\nЕвро -  1 EUR = {eur_to_rub:.2f} RUB\nКитайский юань -  1 CNY = {cny_to_rub:.2f} RUB\nИндийская рупия -  1 INR = {inr_to_rub:.2f} RUB",
+    "financial_tips": [
+        "Совет 1: Ведите бюджет.",
+        "Совет 2: Откладывайте деньги.",
+        "Совет 3: Покупайте со скидками."
+    ],
+    "enter_category": "Введите {category_number} категорию расходов:",
+    "enter_expense": "Введите расходы для категории {category_number}:",
+    "expenses_saved": "Категории и расходы сохранены!"
+}
