@@ -155,27 +155,32 @@ async def finances_expenses3(message: Message, state: FSMContext):
     await state.clear()
     await message.answer(MESSAGES["expenses_saved"])
 
-async def main():
-    await dp.start_polling(bot)
-
-if __name__ == "__main__":
-    asyncio.run(main())
+@dp.message(Command("help"))
+async def show_help(message: Message):
+    await message.answer(MESSAGES["help_message"])
 
 
+@dp.message(Command("see_db"))
+async def see_database(message: Message):
+    with sqlite3.connect("user.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT name, category1, expenses1, category2, expenses2, category3, expenses3 FROM users")
+        users_data = cursor.fetchall()
 
+    if users_data:
+        response = MESSAGES["db_data"].format(
+            data="\n\n".join(
+                f"Имя: {name}\n"
+                f"Категория 1: {category1}, Расходы: {expenses1:.2f}\n"
+                f"Категория 2: {category2}, Расходы: {expenses2:.2f}\n"
+                f"Категория 3: {category3}, Расходы: {expenses3:.2f}"
+                for name, category1, expenses1, category2, expenses2, category3, expenses3 in users_data
+            )
+        )
+    else:
+        response = MESSAGES["db_empty"]
 
-
-
-
-
-
-
-
-
-
-
-
-
+    await message.answer(response)
 
 
 # Запуск бота
